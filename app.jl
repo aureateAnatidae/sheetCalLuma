@@ -1,32 +1,25 @@
 module App
-using Genie, GenieFramework
 
+using GenieFramework
 include("app/nav.jl")
 
-Stipple.Layout.add_script("https://cdn.tailwindcss.com")
-
-@genietools
-
-
 @app begin
-    @in view = "ALL"
+    @in view = 0
+    @in fc = "grey-7"
+    @in cc = "grey-7"
+    @in sc = "grey-7"
+    @in lc = "grey-7"
     @onchange view begin
-       @info view
+        @info view
+        fc = "grey-7"; cc = "grey-7"; sc = "grey-7"; lc = "grey-7"
     end
 end
 
-Genie.Secrets.load("config/secrets.jl")
-
 function ui()
     [
-        h1("{{view}}"),
-        nav(:view)
+        nav()
     ]
 end
 
-route("/cal") do
-    include("app/cal.jl")
-end
-
-@page("/", ui)
+ui
 end
