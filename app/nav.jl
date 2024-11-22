@@ -1,6 +1,6 @@
 Stipple.Layout.add_script("https://cdn.tailwindcss.com")
 function nav()
-    cell(class="align-center", [
+    cell(class="col-auto align-center", [
         col(class="row items-center justify-evenly", [
             # View index key:
             # 

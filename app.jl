@@ -18,21 +18,18 @@ include("app/cal.jl")
 end
 
 function embed()
-    if "view" == 1
-        return cal("align-center")
-    end
-    println("view")
-    return h1("""GAH! "view" """)
+    Html.div(class="col", @iif("view == 1"), cal("align-center"))
 end
 
 function ui()
-    cell([
-        col(class="column-inline justify-center items-center", [
-            nav(),
-            
-            Html.div(class="", @iif("view == 1"), cal("align-center"))
+    StippleUI.layout(
+        cell(class="absolute-full column", [
+            col(class="justify-center items-center", [
+                nav(),
+                embed()
+                ])
             ])
-        ])
+    )
 end
 
 

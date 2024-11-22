@@ -1,8 +1,8 @@
 # Converted using Genie.Renderer.Html.html_to_julia("app/cat.jl.html")
 function cal(_class)
     [
-        Genie.Renderer.Html.iframe(
-            height="600",
+        iframe(
+            height="100%",
             scrolling="no",
             htmlsourceindent="2",
             style="border: 0",
