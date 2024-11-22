@@ -5,11 +5,12 @@ using Genie, GenieFramework
 Genie.loadapp()
 Genie.Secrets.load()
 
+include("app.jl")
+
 route("/cal") do
     include("app/cal.jl")
+    cal()
 end
 
-route("/") do
-    #include("app.jl")
-    include("app/embed.jl")
-end
+up(8000, async=true)
+#include("app/cal.jl")
