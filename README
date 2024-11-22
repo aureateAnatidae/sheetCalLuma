@@ -1,1 +1,5 @@
+#sheet-cal-luma: Event syncronization for event planning
 
+##Run:
+
+`julia --project\ninclude("Main.jl")`
