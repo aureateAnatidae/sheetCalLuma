@@ -1,4 +1,4 @@
-# sheet-cal-luma: Multi-platform syncronization for event planning
+# sheet-cal-luma: Multi-platform synchronization for event planning
 
 ## Run:
 
