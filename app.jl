@@ -6,11 +6,12 @@ using GenieFramework, HTTP
 include("app/nav.jl")
 include("app/cal.jl")
 include("app/sheet.jl")
+include("app/syncto.jl")
 
 include("lib/gcalAPI.jl")
 
 @app begin
-    @in view = 1
+    @in view = 0
     @in fc = "grey-7"
     @in cc = "grey-7"
     @in sc = "grey-7"
@@ -18,6 +19,34 @@ include("lib/gcalAPI.jl")
     @onchange view begin
         @info view
     end
+    
+    @in sync = -1
+    @in SYN = "grey-7"
+    @in CAL = "grey-7"
+    @in SHE = "grey-7"
+    @in LUM = "grey-7"
+    @onchange sync begin
+        @info sync
+    end
+    @in sync_disabled = true
+    @in sync_loading = false
+    
+end
+
+# Set defaults
+function setDefs()
+    global model = @init
+    
+    model.sync = -1
+    model.SYN = "grey-7"
+    model.CAL = "grey-7"
+    model.SHE = "grey-7"
+    model.LUM = "grey-7"
+    
+    model.sync_disabled = true
+    model.sync_loading = false
+    
+    @show model
 end
 
 function embed()
@@ -29,13 +58,15 @@ end
 
 function ui()
     #gcalEventList()
-    StippleUI.layout(
+    setDefs()
+    return StippleUI.layout(
         cell(class="absolute-full column", [
             col(class="justify-center items-center", [
                 nav(),
-                embed()
+                embed(),
+                syncMenu()
                 ])
-            ])
+        ])
     )
 end
 
