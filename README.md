@@ -1,11 +1,12 @@
 # sheet-cal-luma: Multi-platform synchronization for event planning
 
-## Run:
+## Run
 
 ```
 julia --project
 include("Main.jl")
 ```
+Access your site at `localhost:8000`
 
 ## Demo
 
