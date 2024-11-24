@@ -1,11 +1,13 @@
 module App
 
-using GenieFramework
+using GenieFramework, HTTP
 @genietools
 
 include("app/nav.jl")
 include("app/cal.jl")
 include("app/sheet.jl")
+
+include("lib/gcalAPI.jl")
 
 @app begin
     @in view = 1
@@ -26,6 +28,7 @@ function embed()
 end
 
 function ui()
+    #gcalEventList()
     StippleUI.layout(
         cell(class="absolute-full column", [
             col(class="justify-center items-center", [
