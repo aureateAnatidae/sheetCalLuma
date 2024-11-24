@@ -5,6 +5,7 @@ using GenieFramework
 
 include("app/nav.jl")
 include("app/cal.jl")
+include("app/sheet.jl")
 
 @app begin
     @in view = 1
@@ -18,7 +19,10 @@ include("app/cal.jl")
 end
 
 function embed()
-    Html.div(class="col", @iif("view == 1"), cal("align-center"))
+    [
+        Html.div(class="col", @iif("view == 1"), cal("align-center")),
+        Html.div(class="col", @iif("view == 2"), sheet("align-center"))
+    ]
 end
 
 function ui()
@@ -34,5 +38,4 @@ end
 
 
 @page("/", ui)
-#@page("/c", include("app/cal.jl"))
 end

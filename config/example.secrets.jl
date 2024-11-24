@@ -1,6 +1,7 @@
 # Run Genie.Generator.write_secrets_file(). Add these above.
 @show @__MODULE__
 
+# For later: try OAuth document selection
 const GCAL_ID="Cogito";
 const GSHEET_ID="Ergo";
 const G_API="Sum";
