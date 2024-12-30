@@ -1,16 +1,9 @@
 module App
-
-using GenieFramework, HTTP
+using GenieFramework, HTTP, JSON3
 @genietools
 
-include("app/nav.jl")
-include("app/cal.jl")
-include("app/sheet.jl")
-include("app/syncto.jl")
-
-include("lib/gcalAPI.jl")
-
 @app begin
+    #@name "Event Sync"
     @in view = 0
     @in fc = "grey-7"
     @in cc = "grey-7"
@@ -30,7 +23,16 @@ include("lib/gcalAPI.jl")
     end
     @in sync_disabled = true
     @in sync_loading = false
+end
+
+# Need a better solution for this
+function reloadCode()
+    include("app/nav.jl")
+    include("app/cal.jl")
+    include("app/sheet.jl")
+    include("app/syncto.jl")
     
+    include("lib/gcalAPI.jl")
 end
 
 # Set defaults
@@ -46,7 +48,7 @@ function setDefs()
     model.sync_disabled = true
     model.sync_loading = false
     
-    @show model
+    #@show model
 end
 
 function embed()
@@ -57,7 +59,8 @@ function embed()
 end
 
 function ui()
-    #gcalEventList()
+    reloadCode()
+    gcalEventList()
     setDefs()
     return StippleUI.layout(
         cell(class="absolute-full column", [

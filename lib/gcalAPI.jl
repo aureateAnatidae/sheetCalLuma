@@ -6,5 +6,6 @@ function gcalEventList()
         ],
         verbose=3
     )
-    @info response
+    events = JSON3.read(response.body)
+    @show events
 end
